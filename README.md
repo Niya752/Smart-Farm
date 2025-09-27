@@ -107,7 +107,9 @@ It provides soil and weather analysis, crop recommendation based on soil and wea
 
 ## Marketing
 
-* Adding subscription can make this website usefull to generate revenue.
+* Adding subscription can make this website useful to generate revenue.
+* Adding advertisment in the videos can be another revenue source
+* Commission earned through farm visits.
  
 
 ---
