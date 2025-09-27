@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace & Mandi Prices - Smart Farm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl">🌱</div>
+                    <h1 class="text-2xl font-bold cursor-pointer" onclick="window.location.href='index.html'">Smart Farm</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select class="bg-white text-gray-800 px-3 py-2 rounded-lg border-none outline-none">
+                        <option>English</option>
+                        <option>हिंदी</option>
+                        <option>తెలుగు</option>
+                        <option>தமிழ்</option>
+                        <option>বাংলা</option>
+                    </select>
+                    <div class="flex items-center space-x-2 bg-yellow-400 text-gray-800 px-3 py-2 rounded-lg">
+                        <span class="coin-animation">🪙</span>
+                        <span class="font-semibold" id="coinBalance">1,250</span>
+                    </div>
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 font-semibold">
+                        👤
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex space-x-1 overflow-x-auto py-2">
+                <a href="index.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🏠 Home</a>
+                <a href="soil-schemes.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🌡️ Soil & Schemes</a>
+                <a href="learning-hub.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">📹 Learning Hub</a>
+                <a href="marketplace.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap active">🛒 Marketplace</a>
+                <a href="farm-visits.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🚜 Farm Visits</a>
+                <a href="news-alerts.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">📰 News & Alerts</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">🛒 Marketplace & Mandi Prices</h2>
+            <p class="text-gray-600">Trade agricultural products and check real-time market prices</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Marketplace Section -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-semibold text-gray-800">🛒 Marketplace</h3>
+                        <div class="flex space-x-2">
+                            <button onclick="openSellProduct()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Sell Product</button>
+                            <button onclick="openMyOrders()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">My Orders</button>
+                            <div class="relative">
+                                <button onclick="openCart()" class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 flex items-center space-x-2">
+                                    <span>🛒</span>
+                                    <span>Cart</span>
+                                    <span id="cartCount" class="bg-red-500 text-white text-xs rounded-full px-2 py-1 ml-1">0</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-4 mb-6">
+                        <button onclick="filterProducts('all')" class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 active">All</button>
+                        <button onclick="filterProducts('seeds')" class="filter-btn bg-green-100 text-green-800 px-4 py-2 rounded-lg hover:bg-green-200">Seeds</button>
+                        <button onclick="filterProducts('fertilizers')" class="filter-btn bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg hover:bg-yellow-200">Fertilizers</button>
+                        <button onclick="filterProducts('tools')" class="filter-btn bg-blue-100 text-blue-800 px-4 py-2 rounded-lg hover:bg-blue-200">Tools</button>
+                        <button onclick="filterProducts('organic')" class="filter-btn bg-purple-100 text-purple-800 px-4 py-2 rounded-lg hover:bg-purple-200">Organic</button>
+                    </div>
+
+                    <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Seeds -->
+                        <div class="product-card product-item border rounded-lg p-4 hover:shadow-md transition-shadow" data-category="seeds" data-id="1">
+                            <div class="text-2xl mb-2">🌾</div>
+                            <h4 class="font-semibold">Premium Wheat Seeds</h4>
+                            <p class="text-sm text-gray-600 mb-2">High yield variety - 50kg bag</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-600">₹2,250</span>
+                                <span class="text-xs text-gray-500">⭐ 4.8 (23 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="openBuyNow(1)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Buy Now</button>
+                                <button onclick="addToCart(1)" class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">+</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card product-item border rounded-lg p-4 hover:shadow-md transition-shadow" data-category="seeds" data-id="2">
+                            <div class="text-2xl mb-2">🌽</div>
+                            <h4 class="font-semibold">Hybrid Corn Seeds</h4>
+                            <p class="text-sm text-gray-600 mb-2">Disease resistant - 25kg bag</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-600">₹1,800</span>
+                                <span class="text-xs text-gray-500">⭐ 4.7 (18 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="openBuyNow(2)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Buy Now</button>
+                                <button onclick="addToCart(2)" class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">+</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card product-item border rounded-lg p-4 hover:shadow-md transition-shadow" data-category="seeds" data-id="3">
+                            <div class="text-2xl mb-2">🌾</div>
+                            <h4 class="font-semibold">Basmati Rice Seeds</h4>
+                            <p class="text-sm text-gray-600 mb-2">Premium quality - 30kg bag</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-600">₹3,200</span>
+                                <span class="text-xs text-gray-500">⭐ 4.9 (35 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="openBuyNow(3)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Buy Now</button>
+                                <button onclick="addToCart(3)" class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Fertilizers -->
+                        <div class="product-card product-item border rounded-lg p-4 hover:shadow-md transition-shadow" data-category="fertilizers" data-id="4">
+                            <div class="text-2xl mb-2">🧪</div>
+                            <h4 class="font-semibold">Organic Fertilizer NPK</h4>
+                            <p class="text-sm text-gray-600 mb-2">10:26:26 - 25kg bag</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-600">₹850</span>
+                                <span class="text-xs text-gray-500">⭐ 4.6 (15 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="openBuyNow(4)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Buy Now</button>
+                                <button onclick="addToCart(4)" class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">+</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card product-item border rounded-lg p-4 hover:shadow-md transition-shadow" data-category="fertilizers" data-id="5">
+                            <div class="text-2xl mb-2">🌱</div>
+                            <h4 class="font-semibold">Urea Fertilizer</h4>
+                            <p class="text-sm text-gray-600 mb-2">46% Nitrogen - 50kg bag</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-600">₹1,200</span>
+                                <span class="text-xs text-gray-500">⭐ 4.5 (28 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="openBuyNow(5)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Buy Now</button>
+                                <button onclick="addToCart(5)" class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">+</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card product-item border rounded-lg p-4 hover:shadow-md transition-shadow" data-category="fertilizers" data-id="6">
+                            <div class="text-2xl mb-2">🍃</div>
+                            <h4 class="font-semibold">Vermicompost</h4>
+                            <p class="text-sm text-gray-600 mb-2">Organic compost - 40kg bag</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-600">₹600</span>
+                                <span class="text-xs text-gray-500">⭐ 4.8 (42 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="openBuyNow(6)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Buy Now</button>
+                                <button onclick="addToCart(6)" class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Tools -->
+                        <div class="product-card product-item border rounded-lg p-4 hover:shadow-md transition-shadow" data-category="tools" data-id="7">
+                            <div class="text-2xl mb-2">🚜</div>
+                            <h4 class="font-semibold">Mini Tractor</h4>
+                            <p class="text-sm text-gray-600 mb-2">15 HP - Perfect for small farms</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-600">₹2,50,000</span>
+                                <span class="text-xs text-gray-500">⭐ 4.9 (12 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="openBuyNow(7)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Buy Now</button>
+                                <button onclick="addToCart(7)" class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">+</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card product-item border rounded-lg p-4 hover:shadow-md transition-shadow" data-category="tools" data-id="8">
+                            <div class="text-2xl mb-2">💧</div>
+                            <h4 class="font-semibold">Drip Irrigation Kit</h4>
+                            <p class="text-sm text-gray-600 mb-2">Complete setup for 1 acre</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-600">₹15,000</span>
+                                <span class="text-xs text-gray-500">⭐ 4.7 (25 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="openBuyNow(8)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Buy Now</button>
+                                <button onclick="addToCart(8)" class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Organic Products -->
+                        <div class="product-card product-item border rounded-lg p-4 hover:shadow-md transition-shadow" data-category="organic" data-id="9">
+                            <div class="text-2xl mb-2">🌿</div>
+                            <h4 class="font-semibold">Organic Pesticide</h4>
+                            <p class="text-sm text-gray-600 mb-2">Neem-based - 1 liter bottle</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-600">₹450</span>
+                                <span class="text-xs text-gray-500">⭐ 4.8 (19 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="openBuyNow(9)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Buy Now</button>
+                                <button onclick="addToCart(9)" class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mandi Prices Section -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800">💰 Live Mandi Prices</h3>
+                        <select class="border rounded px-2 py-1 text-sm" onchange="updateMandiPrices(this.value)">
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="up">Uttar Pradesh</option>
+                            <option value="karnataka">Karnataka</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="bg-green-50 border rounded-lg p-3">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-semibold text-green-800">Wheat</h4>
+                                    <p class="text-xs text-green-600">Per Quintal</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold text-green-800">₹2,150</div>
+                                    <div class="text-xs text-green-600">↗ +2.5%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-yellow-50 border rounded-lg p-3">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-semibold text-yellow-800">Rice</h4>
+                                    <p class="text-xs text-yellow-600">Per Quintal</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold text-yellow-800">₹3,200</div>
+                                    <div class="text-xs text-red-600">↘ -1.2%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 border rounded-lg p-3">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-semibold text-blue-800">Sugarcane</h4>
+                                    <p class="text-xs text-blue-600">Per Quintal</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold text-blue-800">₹350</div>
+                                    <div class="text-xs text-green-600">↗ +0.8%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 border rounded-lg p-3">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-semibold text-purple-800">Cotton</h4>
+                                    <p class="text-xs text-purple-600">Per Quintal</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold text-purple-800">₹6,800</div>
+                                    <div class="text-xs text-green-600">↗ +3.1%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-50 border rounded-lg p-3">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-semibold text-orange-800">Onion</h4>
+                                    <p class="text-xs text-orange-600">Per Quintal</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold text-orange-800">₹1,850</div>
+                                    <div class="text-xs text-red-600">↘ -5.2%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-teal-50 border rounded-lg p-3">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-semibold text-teal-800">Tomato</h4>
+                                    <p class="text-xs text-teal-600">Per Quintal</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold text-teal-800">₹2,400</div>
+                                    <div class="text-xs text-green-600">↗ +8.3%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="w-full mt-4 bg-gray-100 text-gray-800 py-2 rounded hover:bg-gray-200" onclick="viewAllPrices()">View All Prices</button>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mt-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">📊 Quick Stats</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Total Products</span>
+                            <span class="font-semibold">1,247</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Active Sellers</span>
+                            <span class="font-semibold">156</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Orders Today</span>
+                            <span class="font-semibold">89</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Avg. Rating</span>
+                            <span class="font-semibold">4.7 ⭐</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sell Product Modal -->
+    <div id="sellProductModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">🛒 Sell Your Product</h3>
+                        <button onclick="closeSellProduct()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+                    </div>
+
+                    <form id="sellProductForm" class="space-y-6">
+                        <!-- Product Images Upload -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Product Images *</label>
+                            <div class="upload-area border-2 border-dashed border-green-300 rounded-lg p-6 text-center cursor-pointer" onclick="document.getElementById('productImages').click()">
+                                <div class="text-4xl mb-2">📷</div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Upload Product Images</h4>
+                                <p class="text-gray-600 mb-4">Add multiple photos of your product</p>
+                                <button type="button" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Choose Images</button>
+                                <p class="text-xs text-gray-500 mt-2">JPG, PNG (Max 5MB each, up to 5 images)</p>
+                                <input type="file" id="productImages" class="hidden" accept="image/*" multiple onchange="handleProductImages(event)">
+                            </div>
+                            <div id="imagePreviewContainer" class="hidden mt-3">
+                                <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="imagePreviewGrid"></div>
+                            </div>
+                        </div>
+
+                        <!-- Product Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Product Name *</label>
+                                <input type="text" id="productName" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter product name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+                                <select id="productCategory" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                                    <option value="">Select category</option>
+                                    <option value="seeds">🌾 Seeds</option>
+                                    <option value="fertilizers">🧪 Fertilizers</option>
+                                    <option value="tools">🔧 Tools & Equipment</option>
+                                    <option value="organic">🌱 Organic Products</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Description *</label>
+                            <textarea id="productDescription" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Describe your product, its benefits, and usage instructions..." required></textarea>
+                        </div>
+
+                        <!-- Quantity and Pricing -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Available Quantity *</label>
+                                <input type="number" id="productQuantity" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="100" min="1" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Unit *</label>
+                                <select id="productUnit" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                                    <option value="">Select unit</option>
+                                    <option value="kg">Kg</option>
+                                    <option value="bags">Bags</option>
+                                    <option value="liters">Liters</option>
+                                    <option value="pieces">Pieces</option>
+                                    <option value="packets">Packets</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Price per Unit (₹) *</label>
+                                <input type="number" id="productPrice" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="2250" min="1" required>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">State *</label>
+                                <select id="productState" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                                    <option value="">Select state</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                    <option value="punjab">Punjab</option>
+                                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                                    <option value="karnataka">Karnataka</option>
+                                    <option value="tamil-nadu">Tamil Nadu</option>
+                                    <option value="gujarat">Gujarat</option>
+                                    <option value="rajasthan">Rajasthan</option>
+                                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">City/District *</label>
+                                <input type="text" id="productCity" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter city or district" required>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number *</label>
+                                <input type="tel" id="contactNumber" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="+91 9876543210" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact Time</label>
+                                <select id="contactTime" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option value="anytime">Anytime</option>
+                                    <option value="morning">Morning (6 AM - 12 PM)</option>
+                                    <option value="afternoon">Afternoon (12 PM - 6 PM)</option>
+                                    <option value="evening">Evening (6 PM - 10 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Coin Reward Info -->
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🪙</span>
+                                <h4 class="font-semibold text-green-800">Earn Coins for Selling!</h4>
+                            </div>
+                            <div class="text-sm text-green-700 space-y-1">
+                                <p>• Listing reward: 10 coins for approved product</p>
+                                <p>• Sale commission: 2% of sale value in coins</p>
+                                <p>• Quality bonus: Up to 25 extra coins for detailed listings</p>
+                                <p>• Review bonus: 5 coins per positive buyer review</p>
+                            </div>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="flex space-x-4">
+                            <button type="button" onclick="submitProduct()" class="flex-1 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 font-semibold">
+                                List Product
+                            </button>
+                            <button type="button" onclick="saveProductDraft()" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">
+                                Save Draft
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">🛒 Shopping Cart</h3>
+                        <button onclick="closeCart()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+                    </div>
+
+                    <div id="cartItems" class="space-y-4">
+                        <!-- Cart items will be populated here -->
+                    </div>
+
+                    <div id="cartEmpty" class="text-center py-8 hidden">
+                        <span class="text-6xl">🛒</span>
+                        <h4 class="text-xl font-semibold text-gray-800 mt-4">Your cart is empty</h4>
+                        <p class="text-gray-600 mt-2">Add some products to get started!</p>
+                    </div>
+
+                    <div id="cartSummary" class="border-t pt-4 mt-6 hidden">
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Subtotal:</span>
+                                <span id="cartSubtotal">₹0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Shipping:</span>
+                                <span id="cartShipping">₹100</span>
+                            </div>
+                            <div class="flex justify-between font-bold text-lg">
+                                <span>Total:</span>
+                                <span id="cartTotal" class="text-green-600">₹0</span>
+                            </div>
+                        </div>
+                        <button onclick="proceedToCheckout()" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 font-semibold mt-4">
+                            Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buy Now Modal -->
+    <div id="buyNowModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">🛍️ Buy Product</h3>
+                        <button onclick="closeBuyNow()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+                    </div>
+
+                    <div id="buyNowContent">
+                        <!-- Product details will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Smart Farm</h4>
+                    <p class="text-gray-400">Empowering farmers with technology and knowledge for sustainable agriculture.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="soil-schemes.html" class="hover:text-white">Soil Analysis</a></li>
+                        <li><a href="learning-hub.html" class="hover:text-white">Learning Hub</a></li>
+                        <li><a href="marketplace.html" class="hover:text-white">Marketplace</a></li>
+                        <li><a href="farm-visits.html" class="hover:text-white">Farm Visits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">📘</a>
+                        <a href="#" class="text-gray-400 hover:text-white">🐦</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📷</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Smart Farm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="marketplace.js"></script>
+</body>
+</html>

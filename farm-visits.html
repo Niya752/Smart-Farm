@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Visits - Smart Farm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl">🌱</div>
+                    <h1 class="text-2xl font-bold cursor-pointer" onclick="window.location.href='index.html'">Smart Farm</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select class="bg-white text-gray-800 px-3 py-2 rounded-lg border-none outline-none">
+                        <option>English</option>
+                        <option>हिंदी</option>
+                        <option>తెలుగు</option>
+                        <option>தமிழ்</option>
+                        <option>বাংলা</option>
+                    </select>
+                    <div class="flex items-center space-x-2 bg-yellow-400 text-gray-800 px-3 py-2 rounded-lg">
+                        <span class="coin-animation">🪙</span>
+                        <span class="font-semibold" id="coinBalance">1,250</span>
+                    </div>
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 font-semibold">
+                        👤
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex space-x-1 overflow-x-auto py-2">
+                <a href="index.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🏠 Home</a>
+                <a href="soil-schemes.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🌡️ Soil & Schemes</a>
+                <a href="learning-hub.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">📹 Learning Hub</a>
+                <a href="marketplace.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🛒 Marketplace</a>
+                <a href="farm-visits.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap active">🚜 Farm Visits</a>
+                <a href="news-alerts.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">📰 News & Alerts</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">🚜 Farm Visits</h2>
+            <p class="text-gray-600">Book visits to successful farms and learn from experienced farmers</p>
+        </div>
+
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex space-x-4">
+                <button onclick="openListMyFarm()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center space-x-2">
+                    <span>🚜</span>
+                    <span>List My Farm</span>
+                </button>
+                <button onclick="openMyBookings()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2">
+                    <span>📅</span>
+                    <span>My Bookings</span>
+                </button>
+            </div>
+            <div class="flex items-center space-x-2 bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg">
+                <span>🪙</span>
+                <span class="font-semibold">Total Earned: 320 coins</span>
+            </div>
+        </div>
+
+        <!-- Filter and Search -->
+        <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+            <div class="flex flex-wrap gap-4 items-center">
+                <div class="flex-1 min-w-64">
+                    <input type="text" placeholder="Search farms by name, location, or type..." class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <option>All Farm Types</option>
+                    <option>🌱 Organic Farm</option>
+                    <option>🐄 Dairy Farm</option>
+                    <option>🐔 Poultry Farm</option>
+                    <option>🐟 Aquaculture</option>
+                    <option>🌾 Mixed Farming</option>
+                    <option>🥬 Hydroponic</option>
+                    <option>🍎 Fruit Orchard</option>
+                    <option>🥕 Vegetable Farm</option>
+                </select>
+                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <option>All Locations</option>
+                    <option>Maharashtra</option>
+                    <option>Punjab</option>
+                    <option>Uttar Pradesh</option>
+                    <option>Karnataka</option>
+                    <option>Tamil Nadu</option>
+                    <option>Gujarat</option>
+                    <option>Rajasthan</option>
+                </select>
+                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <option>Sort by: Distance</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Rating: High to Low</option>
+                    <option>Availability</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Featured Farms -->
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">⭐ Featured Farms</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Farm Card 1 -->
+                <div class="farm-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                        <span class="text-6xl">🌱</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-semibold text-lg">Green Valley Organic Farm</h4>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Featured</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">🌱 Organic Farm • 15 acres • Maharashtra</p>
+                        <p class="text-sm text-gray-600 mb-3">Learn sustainable farming techniques and organic crop cultivation methods</p>
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                                <span class="text-sm text-gray-600">4.9 (127 reviews)</span>
+                            </div>
+                            <span class="font-bold text-green-600">₹200/person</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="openBookVisit(1)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Book Visit</button>
+                            <button class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farm Card 2 -->
+                <div class="farm-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                        <span class="text-6xl">🐄</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-semibold text-lg">Happy Cow Dairy Farm</h4>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Popular</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">🐄 Dairy Farm • 25 acres • Punjab</p>
+                        <p class="text-sm text-gray-600 mb-3">Experience modern dairy farming and learn milk production techniques</p>
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                                <span class="text-sm text-gray-600">4.8 (89 reviews)</span>
+                            </div>
+                            <span class="font-bold text-green-600">₹180/person</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="openBookVisit(2)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Book Visit</button>
+                            <button class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farm Card 3 -->
+                <div class="farm-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">
+                        <span class="text-6xl">🐔</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-semibold text-lg">Sunrise Poultry Farm</h4>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">New</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">🐔 Poultry Farm • 8 acres • Karnataka</p>
+                        <p class="text-sm text-gray-600 mb-3">Learn poultry management and egg production best practices</p>
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-yellow-500">⭐⭐⭐⭐</span>
+                                <span class="text-sm text-gray-600">4.6 (45 reviews)</span>
+                            </div>
+                            <span class="font-bold text-green-600">₹150/person</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="openBookVisit(3)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Book Visit</button>
+                            <button class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farm Card 4 -->
+                <div class="farm-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+                        <span class="text-6xl">🐟</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-semibold text-lg">Aqua Fresh Fish Farm</h4>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Special</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">🐟 Aquaculture • 12 acres • Tamil Nadu</p>
+                        <p class="text-sm text-gray-600 mb-3">Discover fish farming techniques and water management systems</p>
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                                <span class="text-sm text-gray-600">4.7 (63 reviews)</span>
+                            </div>
+                            <span class="font-bold text-green-600">₹250/person</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="openBookVisit(4)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Book Visit</button>
+                            <button class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farm Card 5 -->
+                <div class="farm-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center">
+                        <span class="text-6xl">🥬</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-semibold text-lg">Urban Hydroponic Farm</h4>
+                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-xs">Modern</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">🥬 Hydroponic • 2 acres • Maharashtra</p>
+                        <p class="text-sm text-gray-600 mb-3">Learn soilless farming and urban agriculture techniques</p>
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                                <span class="text-sm text-gray-600">4.9 (78 reviews)</span>
+                            </div>
+                            <span class="font-bold text-green-600">₹300/person</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="openBookVisit(5)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Book Visit</button>
+                            <button class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farm Card 6 -->
+                <div class="farm-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                        <span class="text-6xl">🍎</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-semibold text-lg">Golden Apple Orchard</h4>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Premium</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">🍎 Fruit Orchard • 30 acres • Himachal Pradesh</p>
+                        <p class="text-sm text-gray-600 mb-3">Experience fruit cultivation and orchard management practices</p>
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                                <span class="text-sm text-gray-600">4.8 (92 reviews)</span>
+                            </div>
+                            <span class="font-bold text-green-600">₹350/person</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="openBookVisit(6)" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">Book Visit</button>
+                            <button class="px-3 py-2 border border-green-600 text-green-600 rounded hover:bg-green-50">❤️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center">
+            <button class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700">Load More Farms</button>
+        </div>
+    </main>
+
+    <!-- List My Farm Modal -->
+    <div id="listMyFarmModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">🚜 List My Farm for Visits</h3>
+                        <button onclick="closeListMyFarm()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+                    </div>
+
+                    <form id="listFarmForm" class="space-y-6">
+                        <!-- Farm Images Upload -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Farm Images *</label>
+                            <div class="upload-area border-2 border-dashed border-green-300 rounded-lg p-6 text-center cursor-pointer" onclick="document.getElementById('farmImages').click()">
+                                <div class="text-4xl mb-2">📷</div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Upload Farm Images</h4>
+                                <p class="text-gray-600 mb-4">Add multiple photos of your farm, crops, and facilities</p>
+                                <button type="button" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Choose Images</button>
+                                <p class="text-xs text-gray-500 mt-2">JPG, PNG (Max 5MB each, up to 8 images)</p>
+                                <input type="file" id="farmImages" class="hidden" accept="image/*" multiple onchange="handleFarmImages(event)">
+                            </div>
+                            <div id="farmImagePreviewContainer" class="hidden mt-3">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="farmImagePreviewGrid"></div>
+                            </div>
+                        </div>
+
+                        <!-- Farmer Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Farmer Name *</label>
+                                <input type="text" id="farmerName" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter farmer's full name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Farm Name *</label>
+                                <input type="text" id="farmName" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter farm name" required>
+                            </div>
+                        </div>
+
+                        <!-- Farm Address -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Complete Farm Address *</label>
+                            <textarea id="farmAddress" rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter complete address with landmarks..." required></textarea>
+                        </div>
+
+                        <!-- Farm Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Total Land Area *</label>
+                                <input type="number" id="landArea" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="5" min="0.1" step="0.1" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Area Unit *</label>
+                                <select id="areaUnit" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                                    <option value="">Select unit</option>
+                                    <option value="acres">Acres</option>
+                                    <option value="hectares">Hectares</option>
+                                    <option value="bigha">Bigha</option>
+                                    <option value="katha">Katha</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Farm Type *</label>
+                                <select id="farmType" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                                    <option value="">Select type</option>
+                                    <option value="organic">🌱 Organic Farm</option>
+                                    <option value="dairy">🐄 Dairy Farm</option>
+                                    <option value="poultry">🐔 Poultry Farm</option>
+                                    <option value="aquaculture">🐟 Aquaculture</option>
+                                    <option value="mixed">🌾 Mixed Farming</option>
+                                    <option value="hydroponic">🥬 Hydroponic</option>
+                                    <option value="fruit">🍎 Fruit Orchard</option>
+                                    <option value="vegetable">🥕 Vegetable Farm</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Farm Description -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Farm Description *</label>
+                            <textarea id="farmDescription" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Describe your farm, what visitors can learn, activities available, crops grown, etc..." required></textarea>
+                        </div>
+
+                        <!-- Visit Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Visit Price per Person (₹) *</label>
+                                <input type="number" id="visitPrice" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="200" min="50" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Maximum Visitors per Day</label>
+                                <input type="number" id="maxVisitors" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="20" min="1" max="100">
+                            </div>
+                        </div>
+
+                        <!-- What's Included -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">What's Included in Visit</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="farm-tour">
+                                    <span class="text-sm">🚜 Farm Tour</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="fresh-produce">
+                                    <span class="text-sm">🥕 Fresh Produce Bag</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="traditional-meal">
+                                    <span class="text-sm">🍽️ Traditional Meal</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="hands-on-activity">
+                                    <span class="text-sm">👨‍🌾 Hands-on Activities</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="educational-session">
+                                    <span class="text-sm">📚 Educational Session</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="refreshments">
+                                    <span class="text-sm">☕ Refreshments</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number *</label>
+                                <input type="tel" id="farmContactNumber" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="+91 9876543210" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Best Time to Visit</label>
+                                <select id="bestTime" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option value="morning">🌅 Morning (6 AM - 12 PM)</option>
+                                    <option value="afternoon">☀️ Afternoon (12 PM - 6 PM)</option>
+                                    <option value="evening">🌅 Evening (6 PM - 8 PM)</option>
+                                    <option value="anytime">⏰ Anytime</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Available Days -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Available Days</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="monday" checked>
+                                    <span class="text-sm">Monday</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="tuesday" checked>
+                                    <span class="text-sm">Tuesday</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="wednesday" checked>
+                                    <span class="text-sm">Wednesday</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="thursday" checked>
+                                    <span class="text-sm">Thursday</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="friday" checked>
+                                    <span class="text-sm">Friday</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="saturday" checked>
+                                    <span class="text-sm">Saturday</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="text-green-600" value="sunday" checked>
+                                    <span class="text-sm">Sunday</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Coin Reward Info -->
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🪙</span>
+                                <h4 class="font-semibold text-green-800">Earn Coins from Farm Visits!</h4>
+                            </div>
+                            <div class="text-sm text-green-700 space-y-1">
+                                <p>• Listing reward: 50 coins for approved farm listing</p>
+                                <p>• Visit commission: 10% of each booking in coins</p>
+                                <p>• Quality bonus: Up to 100 extra coins for detailed listings</p>
+                                <p>• Review bonus: 15 coins per positive visitor review</p>
+                            </div>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="flex space-x-4">
+                            <button type="button" onclick="submitFarmListing()" class="flex-1 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 font-semibold">
+                                List My Farm
+                            </button>
+                            <button type="button" onclick="saveFarmDraft()" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">
+                                Save Draft
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Farm Visit Modal -->
+    <div id="bookVisitModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">🎫 Book Farm Visit</h3>
+                        <button onclick="closeBookVisit()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+                    </div>
+
+                    <div id="bookVisitContent">
+                        <!-- Content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Smart Farm</h4>
+                    <p class="text-gray-400">Empowering farmers with technology and knowledge for sustainable agriculture.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="soil-schemes.html" class="hover:text-white">Soil Analysis</a></li>
+                        <li><a href="learning-hub.html" class="hover:text-white">Learning Hub</a></li>
+                        <li><a href="marketplace.html" class="hover:text-white">Marketplace</a></li>
+                        <li><a href="farm-visits.html" class="hover:text-white">Farm Visits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">📘</a>
+                        <a href="#" class="text-gray-400 hover:text-white">🐦</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📷</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Smart Farm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="farm-visits.js"></script>
+</body>
+</html>

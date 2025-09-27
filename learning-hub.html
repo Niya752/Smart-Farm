@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Hub - Smart Farm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl">🌱</div>
+                    <h1 class="text-2xl font-bold cursor-pointer" onclick="window.location.href='index.html'">Smart Farm</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select class="bg-white text-gray-800 px-3 py-2 rounded-lg border-none outline-none">
+                        <option>English</option>
+                        <option>हिंदी</option>
+                        <option>తెలుగు</option>
+                        <option>தமிழ்</option>
+                        <option>বাংলা</option>
+                    </select>
+                    <div class="flex items-center space-x-2 bg-yellow-400 text-gray-800 px-3 py-2 rounded-lg">
+                        <span class="coin-animation">🪙</span>
+                        <span class="font-semibold" id="coinBalance">1,250</span>
+                    </div>
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 font-semibold">
+                        👤
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex space-x-1 overflow-x-auto py-2">
+                <a href="index.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🏠 Home</a>
+                <a href="soil-schemes.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🌡️ Soil & Schemes</a>
+                <a href="learning-hub.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap active">📹 Learning Hub</a>
+                <a href="marketplace.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🛒 Marketplace</a>
+                <a href="farm-visits.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🚜 Farm Visits</a>
+                <a href="news-alerts.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">📰 News & Alerts</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">📹 Learning Hub</h2>
+            <p class="text-gray-600">Watch, learn, share, and earn coins through agricultural knowledge</p>
+        </div>
+
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex space-x-4">
+                <button onclick="openVideoUpload()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center space-x-2">
+                    <span>📹</span>
+                    <span>Upload Video</span>
+                </button>
+                <button onclick="openBlogEditor()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2">
+                    <span>✍️</span>
+                    <span>Write Blog</span>
+                </button>
+            </div>
+            <div class="flex items-center space-x-2 bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg">
+                <span>🪙</span>
+                <span class="font-semibold">Total Earned: 450 coins</span>
+            </div>
+        </div>
+
+        <!-- Filter and Search -->
+        <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+            <div class="flex flex-wrap gap-4 items-center">
+                <div class="flex-1 min-w-64">
+                    <input type="text" placeholder="Search videos, blogs, and articles..." class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <option>All Categories</option>
+                    <option>🌾 Crop Cultivation</option>
+                    <option>🐄 Livestock Management</option>
+                    <option>🌱 Organic Farming</option>
+                    <option>🚜 Equipment & Tools</option>
+                    <option>🐛 Pest Control</option>
+                    <option>💧 Irrigation</option>
+                    <option>🌾 Harvesting</option>
+                    <option>💰 Marketing</option>
+                </select>
+                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <option>All Types</option>
+                    <option>📹 Videos</option>
+                    <option>📝 Blog Posts</option>
+                    <option>📊 Articles</option>
+                </select>
+                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <option>Sort by: Latest</option>
+                    <option>Most Popular</option>
+                    <option>Most Liked</option>
+                    <option>Most Viewed</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Video Card 1 -->
+            <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="video-thumbnail bg-gray-200 h-48 flex items-center justify-center">
+                    <span class="text-6xl">🎥</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold mb-2">Organic Farming Techniques</h4>
+                    <p class="text-sm text-gray-600 mb-3">Learn sustainable farming methods that improve soil health and crop yield</p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 mb-3">
+                        <span>👀 1.2K views</span>
+                        <span>👍 89 likes</span>
+                        <span>🪙 +50 coins</span>
+                    </div>
+                    <button class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Watch Now</button>
+                </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="video-thumbnail bg-gray-200 h-48 flex items-center justify-center">
+                    <span class="text-6xl">🎥</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold mb-2">Poultry Care Basics</h4>
+                    <p class="text-sm text-gray-600 mb-3">Essential tips for maintaining healthy chickens and maximizing egg production</p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 mb-3">
+                        <span>👀 856 views</span>
+                        <span>👍 67 likes</span>
+                        <span>🪙 +35 coins</span>
+                    </div>
+                    <button class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Watch Now</button>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="video-thumbnail bg-gray-200 h-48 flex items-center justify-center">
+                    <span class="text-6xl">🎥</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold mb-2">Aquaculture Setup Guide</h4>
+                    <p class="text-sm text-gray-600 mb-3">Complete guide to setting up fish farming for beginners</p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 mb-3">
+                        <span>👀 642 views</span>
+                        <span>👍 45 likes</span>
+                        <span>🪙 +28 coins</span>
+                    </div>
+                    <button class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Watch Now</button>
+                </div>
+            </div>
+
+            <!-- Blog Card 1 -->
+            <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-gray-200 h-48 flex items-center justify-center">
+                    <span class="text-6xl">📝</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold mb-2">Crop Rotation Benefits</h4>
+                    <p class="text-sm text-gray-600 mb-3">Blog post about improving soil fertility through proper crop rotation</p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 mb-3">
+                        <span>👀 423 reads</span>
+                        <span>👍 32 likes</span>
+                        <span>🪙 +20 coins</span>
+                    </div>
+                    <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Read Article</button>
+                </div>
+            </div>
+
+            <!-- Video Card 4 -->
+            <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="video-thumbnail bg-gray-200 h-48 flex items-center justify-center">
+                    <span class="text-6xl">🎥</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold mb-2">Cattle Breeding Techniques</h4>
+                    <p class="text-sm text-gray-600 mb-3">Advanced breeding methods for improving cattle genetics</p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 mb-3">
+                        <span>👀 789 views</span>
+                        <span>👍 56 likes</span>
+                        <span>🪙 +42 coins</span>
+                    </div>
+                    <button class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Watch Now</button>
+                </div>
+            </div>
+
+            <!-- Video Card 5 -->
+            <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="video-thumbnail bg-gray-200 h-48 flex items-center justify-center">
+                    <span class="text-6xl">🎥</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold mb-2">Hydroponic Farming Setup</h4>
+                    <p class="text-sm text-gray-600 mb-3">Modern soilless farming techniques for urban agriculture</p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 mb-3">
+                        <span>👀 1.5K views</span>
+                        <span>👍 112 likes</span>
+                        <span>🪙 +65 coins</span>
+                    </div>
+                    <button class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Watch Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-8">
+            <button class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700">Load More Content</button>
+        </div>
+    </main>
+
+    <!-- Video Upload Modal -->
+    <div id="videoUploadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">📹 Upload Video</h3>
+                        <button onclick="closeVideoUpload()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+                    </div>
+
+                    <form id="videoUploadForm" class="space-y-6">
+                        <!-- Video Upload Area -->
+                        <div class="upload-area border-2 border-dashed border-green-300 rounded-lg p-8 text-center cursor-pointer" onclick="document.getElementById('videoFile').click()">
+                            <div class="text-6xl mb-4">🎥</div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Upload Your Video</h4>
+                            <p class="text-gray-600 mb-4">Drag & drop your video file or click to browse</p>
+                            <button type="button" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Choose Video File</button>
+                            <p class="text-xs text-gray-500 mt-2">Supported formats: MP4, AVI, MOV (Max 100MB)</p>
+                            <input type="file" id="videoFile" class="hidden" accept="video/*" onchange="handleVideoSelect(event)">
+                        </div>
+
+                        <!-- Video Preview -->
+                        <div id="videoPreview" class="hidden">
+                            <div class="bg-gray-100 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🎬</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-800" id="videoFileName"></div>
+                                        <div class="text-sm text-gray-600" id="videoFileSize"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <div class="bg-gray-200 rounded-full h-2">
+                                        <div id="uploadProgress" class="bg-green-500 h-2 rounded-full progress-bar" style="width: 0%"></div>
+                                    </div>
+                                    <div class="text-xs text-gray-600 mt-1" id="uploadStatus">Ready to upload</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Details -->
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Video Title *</label>
+                                <input type="text" id="videoTitle" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter a descriptive title for your video" required>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                                <textarea id="videoDescription" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Describe what viewers will learn from your video..."></textarea>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+                                    <select id="videoCategory" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                                        <option value="">Select category</option>
+                                        <option value="crop-cultivation">🌾 Crop Cultivation</option>
+                                        <option value="livestock">🐄 Livestock Management</option>
+                                        <option value="organic-farming">🌱 Organic Farming</option>
+                                        <option value="equipment">🚜 Equipment & Tools</option>
+                                        <option value="pest-control">🐛 Pest Control</option>
+                                        <option value="irrigation">💧 Irrigation</option>
+                                        <option value="harvesting">🌾 Harvesting</option>
+                                        <option value="marketing">💰 Marketing</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Language</label>
+                                    <select id="videoLanguage" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                        <option value="english">English</option>
+                                        <option value="hindi">हिंदी</option>
+                                        <option value="telugu">తెలుగు</option>
+                                        <option value="tamil">தமிழ்</option>
+                                        <option value="bengali">বাংলা</option>
+                                        <option value="marathi">मराठी</option>
+                                        <option value="gujarati">ગુજરાતી</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tags (comma separated)</label>
+                                <input type="text" id="videoTags" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="farming, organic, tips, beginner">
+                            </div>
+
+                            <!-- Thumbnail Upload -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Custom Thumbnail (Optional)</label>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-green-400" onclick="document.getElementById('thumbnailFile').click()">
+                                    <span class="text-2xl">🖼️</span>
+                                    <p class="text-sm text-gray-600 mt-1">Upload custom thumbnail (JPG, PNG)</p>
+                                    <input type="file" id="thumbnailFile" class="hidden" accept="image/*" onchange="handleThumbnailSelect(event)">
+                                </div>
+                                <div id="thumbnailPreview" class="hidden mt-2">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm">📷</span>
+                                        <span class="text-sm text-gray-600" id="thumbnailName"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coin Reward Info -->
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🪙</span>
+                                <h4 class="font-semibold text-yellow-800">Earn Coins for Your Video!</h4>
+                            </div>
+                            <div class="text-sm text-yellow-700 space-y-1">
+                                <p>• Base reward: 25 coins for approved video</p>
+                                <p>• Quality bonus: Up to 50 extra coins for high-quality content</p>
+                                <p>• View rewards: 1 coin per 100 views</p>
+                                <p>• Like rewards: 2 coins per like received</p>
+                            </div>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="flex space-x-4">
+                            <button type="button" onclick="uploadVideo()" class="flex-1 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 font-semibold">
+                                Upload Video
+                            </button>
+                            <button type="button" onclick="saveAsDraft()" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">
+                                Save as Draft
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Editor Modal -->
+    <div id="blogEditorModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">✍️ Write Blog Post</h3>
+                        <button onclick="closeBlogEditor()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+                    </div>
+
+                    <form id="blogForm" class="space-y-6">
+                        <!-- Blog Type Selection -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Content Type</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <label class="flex items-center space-x-3 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="radio" name="blogType" value="blog" class="text-blue-600" checked>
+                                    <div>
+                                        <div class="font-semibold">📝 Blog Post</div>
+                                        <div class="text-xs text-gray-600">Detailed article or guide</div>
+                                    </div>
+                                </label>
+                                <label class="flex items-center space-x-3 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="radio" name="blogType" value="review" class="text-blue-600">
+                                    <div>
+                                        <div class="font-semibold">⭐ Review</div>
+                                        <div class="text-xs text-gray-600">Product or service review</div>
+                                    </div>
+                                </label>
+                                <label class="flex items-center space-x-3 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="radio" name="blogType" value="experience" class="text-blue-600">
+                                    <div>
+                                        <div class="font-semibold">💭 Experience</div>
+                                        <div class="text-xs text-gray-600">Personal farming story</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Blog Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
+                                <input type="text" id="blogTitle" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your blog title" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+                                <select id="blogCategory" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                    <option value="">Select category</option>
+                                    <option value="crop-cultivation">🌾 Crop Cultivation</option>
+                                    <option value="livestock">🐄 Livestock Management</option>
+                                    <option value="organic-farming">🌱 Organic Farming</option>
+                                    <option value="equipment-review">🚜 Equipment Review</option>
+                                    <option value="success-story">🏆 Success Story</option>
+                                    <option value="tips-tricks">💡 Tips & Tricks</option>
+                                    <option value="market-insights">📈 Market Insights</option>
+                                    <option value="government-schemes">🏛️ Government Schemes</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Featured Image Upload -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-blue-400" onclick="document.getElementById('blogImage').click()">
+                                <span class="text-4xl">📷</span>
+                                <p class="text-gray-600 mt-2">Upload a featured image for your blog post</p>
+                                <p class="text-xs text-gray-500 mt-1">JPG, PNG (Max 5MB)</p>
+                                <input type="file" id="blogImage" class="hidden" accept="image/*" onchange="handleBlogImageSelect(event)">
+                            </div>
+                            <div id="blogImagePreview" class="hidden mt-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🖼️</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-800" id="blogImageName"></div>
+                                        <div class="text-sm text-gray-600">Image uploaded successfully</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Content Editor -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Content *</label>
+                            <div class="border border-gray-300 rounded-lg">
+                                <!-- Toolbar -->
+                                <div class="border-b border-gray-300 p-3 flex flex-wrap gap-2">
+                                    <button type="button" onclick="formatText('bold')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100" title="Bold">
+                                        <strong>B</strong>
+                                    </button>
+                                    <button type="button" onclick="formatText('italic')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100" title="Italic">
+                                        <em>I</em>
+                                    </button>
+                                    <button type="button" onclick="formatText('underline')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100" title="Underline">
+                                        <u>U</u>
+                                    </button>
+                                    <div class="border-l border-gray-300 mx-2"></div>
+                                    <button type="button" onclick="insertList('ul')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100" title="Bullet List">
+                                        • List
+                                    </button>
+                                    <button type="button" onclick="insertList('ol')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100" title="Numbered List">
+                                        1. List
+                                    </button>
+                                    <div class="border-l border-gray-300 mx-2"></div>
+                                    <button type="button" onclick="insertHeading()" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100" title="Heading">
+                                        H1
+                                    </button>
+                                    <button type="button" onclick="insertQuote()" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100" title="Quote">
+                                        " "
+                                    </button>
+                                </div>
+                                <!-- Editor -->
+                                <div id="blogEditor" contenteditable="true" class="p-4 min-h-[300px] focus:outline-none" placeholder="Start writing your blog post here...">
+                                    <p>Start writing your blog post here...</p>
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">
+                                <span id="wordCount">0</span> words • Use the toolbar above to format your text
+                            </div>
+                        </div>
+
+                        <!-- Tags and Settings -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+                                <input type="text" id="blogTags" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="farming, organic, tips">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Reading Time (minutes)</label>
+                                <input type="number" id="readingTime" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="5" min="1" max="60">
+                            </div>
+                        </div>
+
+                        <!-- SEO Section -->
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-800 mb-3">SEO Settings</h4>
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Meta Description</label>
+                                    <textarea id="metaDescription" rows="2" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Brief description for search engines (150-160 characters)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coin Reward Info -->
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🪙</span>
+                                <h4 class="font-semibold text-blue-800">Earn Coins for Your Blog!</h4>
+                            </div>
+                            <div class="text-sm text-blue-700 space-y-1">
+                                <p>• Base reward: 15 coins for approved blog post</p>
+                                <p>• Quality bonus: Up to 35 extra coins for well-written content</p>
+                                <p>• Read rewards: 1 coin per 50 reads</p>
+                                <p>• Engagement rewards: 3 coins per comment received</p>
+                            </div>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="flex space-x-4">
+                            <button type="button" onclick="publishBlog()" class="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-semibold">
+                                Publish Blog
+                            </button>
+                            <button type="button" onclick="saveBlogDraft()" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">
+                                Save Draft
+                            </button>
+                            <button type="button" onclick="previewBlog()" class="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
+                                Preview
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Smart Farm</h4>
+                    <p class="text-gray-400">Empowering farmers with technology and knowledge for sustainable agriculture.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="soil-schemes.html" class="hover:text-white">Soil Analysis</a></li>
+                        <li><a href="learning-hub.html" class="hover:text-white">Learning Hub</a></li>
+                        <li><a href="marketplace.html" class="hover:text-white">Marketplace</a></li>
+                        <li><a href="farm-visits.html" class="hover:text-white">Farm Visits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">📘</a>
+                        <a href="#" class="text-gray-400 hover:text-white">🐦</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📷</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Smart Farm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="learning-hub.js"></script>
+</body>
+</html>

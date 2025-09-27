@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Analysis & Government Schemes - Smart Farm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl">🌱</div>
+                    <h1 class="text-2xl font-bold cursor-pointer" onclick="window.location.href='index.html'">Smart Farm</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select class="bg-white text-gray-800 px-3 py-2 rounded-lg border-none outline-none">
+                        <option>English</option>
+                        <option>हिंदी</option>
+                        <option>తెలుగు</option>
+                        <option>தமிழ்</option>
+                        <option>বাংলা</option>
+                    </select>
+                    <div class="flex items-center space-x-2 bg-yellow-400 text-gray-800 px-3 py-2 rounded-lg">
+                        <span class="coin-animation">🪙</span>
+                        <span class="font-semibold" id="coinBalance">1,250</span>
+                    </div>
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 font-semibold">
+                        👤
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex space-x-1 overflow-x-auto py-2">
+                <a href="index.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🏠 Home</a>
+                <a href="soil-schemes.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap active">🌡️ Soil & Schemes</a>
+                <a href="learning-hub.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">📹 Learning Hub</a>
+                <a href="marketplace.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🛒 Marketplace</a>
+                <a href="farm-visits.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">🚜 Farm Visits</a>
+                <a href="news-alerts.html" class="nav-link px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 whitespace-nowrap">📰 News & Alerts</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">🌡️ Soil Analysis & Government Schemes</h2>
+            <p class="text-gray-600">Get AI-powered soil recommendations and discover government support programs</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Soil Analysis Section -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-6">🧪 Soil Health Dashboard</h3>
+                
+                <!-- Summary Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">💧</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded text-xs">Good</span>
+                        </div>
+                        <h4 class="font-semibold mb-1">Moisture</h4>
+                        <div class="text-2xl font-bold">45%</div>
+                        <div class="text-blue-100 text-sm">Optimal range: 40-60%</div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-green-400 to-green-600 text-white rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">⚖️</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded text-xs">Good</span>
+                        </div>
+                        <h4 class="font-semibold mb-1">pH Level</h4>
+                        <div class="text-2xl font-bold">6.8</div>
+                        <div class="text-green-100 text-sm">Slightly acidic</div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-yellow-400 to-yellow-600 text-white rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">⚡</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded text-xs">Moderate</span>
+                        </div>
+                        <h4 class="font-semibold mb-1">Conductivity</h4>
+                        <div class="text-2xl font-bold">2.1</div>
+                        <div class="text-yellow-100 text-sm">dS/m</div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-purple-400 to-purple-600 text-white rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">🌱</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded text-xs">Low</span>
+                        </div>
+                        <h4 class="font-semibold mb-1">Organic Matter</h4>
+                        <div class="text-2xl font-bold">1.8%</div>
+                        <div class="text-purple-100 text-sm">Needs improvement</div>
+                    </div>
+                </div>
+
+                <!-- Nutrient Analysis -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- Primary Nutrients -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-800 mb-4">🔴 Primary Nutrients (NPK)</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Nitrogen (N)</span>
+                                    <span class="text-sm text-gray-600">280 mg/kg</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                                    <div class="bg-red-500 h-2 rounded-full" style="width: 70%"></div>
+                                </div>
+                                <p class="text-xs text-gray-600">Promotes leaf growth and chlorophyll production</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Phosphorus (P)</span>
+                                    <span class="text-sm text-gray-600">45 mg/kg</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                                    <div class="bg-orange-500 h-2 rounded-full" style="width: 45%"></div>
+                                </div>
+                                <p class="text-xs text-gray-600">Essential for root development and flowering</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Potassium (K)</span>
+                                    <span class="text-sm text-gray-600">320 mg/kg</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                                <p class="text-xs text-gray-600">Improves disease resistance and water regulation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Nutrients -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-800 mb-4">🟡 Secondary Nutrients</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Calcium (Ca)</span>
+                                    <span class="text-sm text-gray-600">1850 mg/kg</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                                <p class="text-xs text-gray-600">Strengthens cell walls and improves soil structure</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Magnesium (Mg)</span>
+                                    <span class="text-sm text-gray-600">180 mg/kg</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                                    <div class="bg-teal-500 h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                                <p class="text-xs text-gray-600">Central component of chlorophyll molecule</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Sulfur (S)</span>
+                                    <span class="text-sm text-gray-600">25 mg/kg</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                                    <div class="bg-yellow-500 h-2 rounded-full" style="width: 40%"></div>
+                                </div>
+                                <p class="text-xs text-gray-600">Important for protein synthesis and oil formation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pathogenicity Alert -->
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-3">⚠️</span>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-red-800">Pathogenicity Alert</h4>
+                            <p class="text-red-700 text-sm mt-1">
+                                <strong>Pathogen Count:</strong> 2.3 × 10⁵ CFU/g soil
+                            </p>
+                            <p class="text-red-700 text-sm mt-1">
+                                <strong>Recommendation:</strong> Apply bio-fungicide treatment before planting. Consider soil sterilization for sensitive crops.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather Integration -->
+                <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                    <h4 class="font-semibold text-blue-800 mb-3">🌤️ Current Weather Conditions</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <span class="text-3xl">☀️</span>
+                            <div class="font-bold text-blue-800">28°C</div>
+                            <div class="text-sm text-blue-600">Temperature</div>
+                        </div>
+                        <div class="text-center">
+                            <span class="text-3xl">💧</span>
+                            <div class="font-bold text-blue-800">65%</div>
+                            <div class="text-sm text-blue-600">Humidity</div>
+                        </div>
+                        <div class="text-center">
+                            <span class="text-3xl">🌬️</span>
+                            <div class="font-bold text-blue-800">12 km/h</div>
+                            <div class="text-sm text-blue-600">Wind Speed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crop Recommendation System -->
+                <div class="bg-green-50 rounded-lg p-4 mb-6">
+                    <h4 class="font-semibold text-green-800 mb-4">🌾 Smart Crop Recommendations</h4>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-green-800 mb-2">Select Desired Crop:</label>
+                        <select id="cropSelect" class="w-full border border-green-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="">Choose a crop...</option>
+                            <option value="wheat">🌾 Wheat</option>
+                            <option value="rice">🌾 Rice</option>
+                            <option value="corn">🌽 Corn</option>
+                            <option value="potato">🥔 Potato</option>
+                            <option value="tomato">🍅 Tomato</option>
+                            <option value="cotton">🌿 Cotton</option>
+                            <option value="sugarcane">🎋 Sugarcane</option>
+                        </select>
+                    </div>
+
+                    <div id="cropRecommendation" class="hidden">
+                        <div class="bg-white rounded-lg p-4 border border-green-200">
+                            <h5 class="font-semibold text-green-800 mb-2">Soil Modifications Required:</h5>
+                            <div id="modifications" class="space-y-2 mb-4">
+                                <!-- Dynamic content will be inserted here -->
+                            </div>
+                            <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Get Detailed Plan</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <h5 class="font-semibold text-green-800 mb-3">🌤️ Weather-Based Crop Recommendations:</h5>
+                        <div class="bg-white rounded-lg p-4 border border-green-200 mb-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="bg-green-100 text-green-800 p-3 rounded-lg text-center">
+                                    <div class="text-2xl mb-1">🌾</div>
+                                    <div class="font-semibold">Wheat</div>
+                                    <div class="text-xs">Ideal for current weather</div>
+                                    <div class="text-xs mt-1">Temp: Perfect | Humidity: Good</div>
+                                </div>
+                                <div class="bg-yellow-100 text-yellow-800 p-3 rounded-lg text-center">
+                                    <div class="text-2xl mb-1">🥔</div>
+                                    <div class="font-semibold">Potato</div>
+                                    <div class="text-xs">Good conditions</div>
+                                    <div class="text-xs mt-1">Temp: Good | Humidity: Perfect</div>
+                                </div>
+                                <div class="bg-blue-100 text-blue-800 p-3 rounded-lg text-center">
+                                    <div class="text-2xl mb-1">🌽</div>
+                                    <div class="font-semibold">Corn</div>
+                                    <div class="text-xs">Moderate suitability</div>
+                                    <div class="text-xs mt-1">Temp: High | Humidity: Moderate</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="font-semibold text-green-800 mb-3">🧪 Soil Report-Based Crop Recommendations:</h5>
+                        <div class="bg-white rounded-lg p-4 border border-green-200">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg border-l-4 border-green-500">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">🌾</span>
+                                        <div>
+                                            <div class="font-semibold text-green-800">Wheat</div>
+                                            <div class="text-xs text-green-600">Excellent match for your soil conditions</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="bg-green-200 text-green-800 px-2 py-1 rounded text-xs font-semibold">95% Match</div>
+                                        <div class="text-xs text-green-600 mt-1">pH: ✓ NPK: ✓ Moisture: ✓</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">🥔</span>
+                                        <div>
+                                            <div class="font-semibold text-blue-800">Potato</div>
+                                            <div class="text-xs text-blue-600">Good soil compatibility</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="bg-blue-200 text-blue-800 px-2 py-1 rounded text-xs font-semibold">88% Match</div>
+                                        <div class="text-xs text-blue-600 mt-1">pH: ✓ Organic: ⚠️ Moisture: ✓</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">🍅</span>
+                                        <div>
+                                            <div class="font-semibold text-yellow-800">Tomato</div>
+                                            <div class="text-xs text-yellow-600">Requires soil amendments</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="bg-yellow-200 text-yellow-800 px-2 py-1 rounded text-xs font-semibold">72% Match</div>
+                                        <div class="text-xs text-yellow-600 mt-1">pH: ✓ P: ⚠️ Pathogen: ❌</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">🌾</span>
+                                        <div>
+                                            <div class="font-semibold text-red-800">Rice</div>
+                                            <div class="text-xs text-red-600">Not recommended for current soil</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="bg-red-200 text-red-800 px-2 py-1 rounded text-xs font-semibold">45% Match</div>
+                                        <div class="text-xs text-red-600 mt-1">Moisture: ❌ Pathogen: ❌</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                                <h6 class="font-semibold text-gray-800 mb-2">🎯 Combined Weather + Soil Recommendation:</h6>
+                                <div class="bg-gradient-to-r from-green-100 to-blue-100 p-3 rounded-lg border-2 border-green-300">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-3xl">🌾</span>
+                                        <div>
+                                            <div class="font-bold text-green-800">WHEAT is your BEST choice!</div>
+                                            <div class="text-sm text-green-700">Perfect weather conditions + Excellent soil match = Maximum yield potential</div>
+                                            <div class="text-xs text-green-600 mt-1">Expected yield: 45-50 quintals/acre | Profit margin: High</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Upload Section -->
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2">📄 Upload New Soil Report</h4>
+                    <div class="border-2 border-dashed border-blue-300 rounded-lg p-8 text-center">
+                        <div class="text-4xl mb-2">📄</div>
+                        <p class="text-blue-600 mb-3">Drag & drop your soil analysis report or click to browse</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Choose File</button>
+                        <p class="text-xs text-blue-500 mt-2">Supported formats: PDF, JPG, PNG (Max 5MB)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Government Schemes Section -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">🏛️ Government Schemes</h3>
+                
+                <div class="space-y-4">
+                    <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                        <h4 class="font-semibold text-blue-800">PM-KISAN Scheme</h4>
+                        <p class="text-sm text-blue-700 mt-1 mb-2">Direct income support of ₹6,000 per year to farmer families</p>
+                        <div class="flex space-x-2">
+                            <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm">Check Eligibility</button>
+                            <button class="bg-blue-100 text-blue-800 px-3 py-1 rounded text-sm">Apply Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                        <h4 class="font-semibold text-green-800">Soil Health Card Scheme</h4>
+                        <p class="text-sm text-green-700 mt-1 mb-2">Free soil testing and nutrient management recommendations</p>
+                        <div class="flex space-x-2">
+                            <button class="bg-green-600 text-white px-3 py-1 rounded text-sm">Apply Now</button>
+                            <button class="bg-green-100 text-green-800 px-3 py-1 rounded text-sm">Learn More</button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <h4 class="font-semibold text-yellow-800">Crop Insurance Scheme</h4>
+                        <p class="text-sm text-yellow-700 mt-1 mb-2">Protection against crop loss due to natural calamities</p>
+                        <div class="flex space-x-2">
+                            <button class="bg-yellow-600 text-white px-3 py-1 rounded text-sm">Get Quote</button>
+                            <button class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded text-sm">Learn More</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-purple-50 border-l-4 border-purple-400 p-4">
+                        <h4 class="font-semibold text-purple-800">Solar Pump Subsidy</h4>
+                        <p class="text-sm text-purple-700 mt-1 mb-2">Up to 90% subsidy on solar water pumps for irrigation</p>
+                        <div class="flex space-x-2">
+                            <button class="bg-purple-600 text-white px-3 py-1 rounded text-sm">Check Eligibility</button>
+                            <button class="bg-purple-100 text-purple-800 px-3 py-1 rounded text-sm">Apply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Smart Farm</h4>
+                    <p class="text-gray-400">Empowering farmers with technology and knowledge for sustainable agriculture.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="soil-schemes.html" class="hover:text-white">Soil Analysis</a></li>
+                        <li><a href="learning-hub.html" class="hover:text-white">Learning Hub</a></li>
+                        <li><a href="marketplace.html" class="hover:text-white">Marketplace</a></li>
+                        <li><a href="farm-visits.html" class="hover:text-white">Farm Visits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">📘</a>
+                        <a href="#" class="text-gray-400 hover:text-white">🐦</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📷</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Smart Farm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="soil-schemes.js"></script>
+</body>
+</html>

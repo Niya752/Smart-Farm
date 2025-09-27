@@ -1,0 +1,257 @@
+/* Smart Farm - Main Styles */
+
+body {
+    box-sizing: border-box;
+}
+
+.feature-card {
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.coin-animation {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.page-content {
+    display: none;
+}
+
+.page-content.active {
+    display: block;
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.upload-area {
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    border-color: #10b981;
+    background-color: #f0fdf4;
+}
+
+.upload-area.dragover {
+    border-color: #10b981;
+    background-color: #f0fdf4;
+    transform: scale(1.02);
+}
+
+.modal {
+    backdrop-filter: blur(4px);
+}
+
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+/* Soil Analysis Styles */
+.soil-test-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.soil-test-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.soil-test-card.nitrogen {
+    border-left-color: #ef4444;
+}
+
+.soil-test-card.phosphorus {
+    border-left-color: #f97316;
+}
+
+.soil-test-card.potassium {
+    border-left-color: #22c55e;
+}
+
+.soil-test-card.ph {
+    border-left-color: #3b82f6;
+}
+
+.soil-test-card.organic-matter {
+    border-left-color: #8b5cf6;
+}
+
+/* Learning Hub Styles */
+.video-card {
+    transition: all 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.video-thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.video-thumbnail::after {
+    content: '▶';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* Marketplace Styles */
+.product-card {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+    transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+    background-color: #f9fafb;
+}
+
+/* Farm Visits Styles */
+.farm-card {
+    transition: all 0.3s ease;
+}
+
+.farm-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+}
+
+/* News & Alerts Styles */
+.news-card {
+    transition: all 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.alert-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Utility Classes */
+.spinner {
+    border: 4px solid #f3f4f6;
+    border-top: 4px solid #10b981;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feature-card {
+        margin-bottom: 1rem;
+    }
+    
+    .nav-link {
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .bg-white {
+        background-color: #1f2937 !important;
+        color: #f9fafb;
+    }
+    
+    .text-gray-800 {
+        color: #f9fafb !important;
+    }
+    
+    .text-gray-600 {
+        color: #d1d5db !important;
+    }
+    
+    .border-gray-200 {
+        border-color: #374151 !important;
+    }
+}
