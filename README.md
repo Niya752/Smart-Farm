@@ -1,9 +1,12 @@
 # Smart-Farm
 HashItUp
 
+---
+
+## Introduction
 
 Smart Farm is an all-in-one digital platform designed for **farmers, beginners, gardeners, and agriculturists** (including poultry, cattle, and aquaculture).
-It provides soil and weather analysis,crop recommendation based on  a farmer marketplace, learning resources, government scheme updates, agricultural news, live mandi prices — all in one place.
+It provides soil and weather analysis, crop recommendation based on soil and weather analysis, a farmer marketplace, learning resources, government scheme updates, agricultural news, live mandi prices, farm visits — all in one place.
 
 ---
 
@@ -12,7 +15,7 @@ It provides soil and weather analysis,crop recommendation based on  a farmer mar
 ### 1. Soil Analysis & Weather
 
 * Upload soil analysis reports and get detailed insights (pH, NPK, moisture, conductivity, pathogens, organic matter).
-* AI-powered crop suggestions based on soil and local weather (with location + image upload).
+* Data analysed crop suggestions based on soil and local weather (with location + image upload).
 * Guidance on fertilizers (type, quantity, stage).
 * Recommendations for improving soil if a specific crop is chosen.
 
@@ -21,29 +24,33 @@ It provides soil and weather analysis,crop recommendation based on  a farmer mar
 * Upload and watch farming-related videos (crop techniques, cattle/poultry, aquaculture).
 * Earn **coins** for likes, views, and shares.
 * Share blogs, reviews, and experiences.
-* Coins can be used to purchase feeds, fertilizers, and tools.
+* Coins can be used to purchase feeds, fertilizers, and tools among the farmers (as similar to OLX but the exchange part is the coins they get).
 
 ### 3. Marketplace
 
-* Buy & sell crops, fertilizers, livestock, and feeds.
+* Buy & sell crops, fertilizers and feeds among the farmers.
 * Trade useful farm waste or extra inputs.
 * Use coins + secure payments for transactions.
+* Exchange surplus products with those farmers in need.
 
 ### 4. Government Schemes & Subsidies
 
 * Access policies, subsidies, and scheme details.
 * Easy-to-read eligibility information.
+* Timely notification of various schemes and verify eligibility criterias.
 
 ### 5. Farm Visit Experience
 
 * Farmers can host visits for consumers.
 * Visitors pay entry fees, collect products in recyclable bags.
+* They can specify the number of members visiting, purpose of visit, date , time.
 * Promotes agritourism and direct farm-to-consumer connection.
+* Experience the culture of farming
 
 ### 6. Notifications
 
 * Alerts about subsidies, policies, and deadlines.
-* Personalized notifications for relevant crops/livestock.
+* Personalized notifications for relevant crops/fertilisers/feeds.
 
 ### 7. Agriculture News
 
@@ -82,43 +89,32 @@ It provides soil and weather analysis,crop recommendation based on  a farmer mar
 
 ---
 
-## 🔮 Future Scope
+##  Future Scope
 
 * Mobile app version for on-the-go farmers.
 * IoT device integration (real-time soil & crop monitoring).
 * AI chat assistant for farming queries.
-* Blockchain for secure trading & subsidy transparency.
 
 ---
 
-## 📌 Getting Started (Development Setup)
+## Scalability and Sustainability
 
-1. Clone the repository:
+* Diversify the exports and sales to different countries to overcome the unpredicted Tarriffs and other geopolitical issues.
+* Through selling the waste products of various farming activities through this website can reduce pollution (slash and burn agriculture) and in exchange organic fertilizers in return for it.
+* Providing recyclable bags etc in the farm visit, waste used for crafts items like mats etc.
 
-   ```bash
-   git clone https://github.com/your-username/Smart-Farm.git
-   cd Smart-Farm
-   ```
+---
 
-2. Install dependencies (example for Node.js):
+## Marketing
 
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-
-   ```bash
-   npm start
-   ```
-
-4. Open `http://localhost:3000` in your browser.
+* Adding subscription can make this website usefull to generate revenue.
+ 
 
 ---
 
 ## 💡 Team & Credits
 
-Developed during a hackathon by **Team Smart Farm** to empower farmers through technology 🌱.
+Developed during a hackathon by **Team Code Blooded** to empower farmers through technology.
 
 ---
 
